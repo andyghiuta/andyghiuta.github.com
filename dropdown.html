@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Andy Ghiuta Playground, demos, plugins and other usefull stuff" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+	<link href="stylesheets/dropdown.css" rel="stylesheet" media="screen">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="javascripts/dropdown.js"></script>
+
+    <title>Andy Ghiuta's playground - Dropdown demo</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/andyghiuta">View on GitHub</a>
+
+          <h1 id="project_title">Demo for custom dropdown</h1>
+          <h2 id="project_tagline">Yet another trial to customize the default HTML "select" element</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>Install:</h3>
+        <p>
+            You need to add jQuery to your project and the CSS and Javascript files and the image arrow from:
+            <a href="https://github.com/andyghiuta/dropdown">https://github.com/andyghiuta/dropdown</a>
+            <br />
+            Example:
+            <pre>
+            <code>&lt;link href="stylesheets/dropdown.css" rel="stylesheet" media="screen"&gt;
+&lt;script src="http://code.jquery.com/jquery-latest.js"&gt;&lt;/script&gt;
+&lt;script src="javascripts/dropdown.js"&gt;&lt;/script&gt;</code>
+            </pre>
+        </p>
+        <h3>Demos:</h3>
+        <div id="accordion">
+        <h5>1. Default functionality</h5>
+        <div>
+<select name="mySelect1" id="mySelect1">
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+    <option value="4">Option 4</option>
+</select>
+<script type="text/javascript">
+$(function(){
+    $('#mySelect1').dropdown();
+});
+</script>
+            <h6>Code:</h6>
+            <pre>
+            <code>&lt;select name="mySelect1" id="mySelect1"&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+    &lt;option value="4"&gt;Option 4&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script type="text/javascript"&gt;
+// On document ready
+$(function(){
+    // init the plugin with it's options on a selector by choice
+    $('#mySelect1').dropdown();
+});
+&lt;/script&gt;</code>
+            </pre>
+        </div>
+        
+        <h5>2. Having a tip text and a minimum/maximum width defined</h5>
+        <div>
+            <select name="mySelect2" id="mySelect2" data-tip="Select One">
+                <option value="1">Option 1</option>
+                <option value="2">Option two</option>
+                <option value="3">Option three with some text</option>
+                <option value="4">Option four with a very very very long text that will fall outside</option>
+                <option value="5">Option 1</option>
+                <option value="6">Option two</option>
+                <option value="7">Option three with some text</option>
+                <option value="8">Option four with a very very very long text that will fall outside</option>
+                <option value="9">Option 1</option>
+                <option value="10">Option two</option>
+                <option value="11">Option three with some text</option>
+                <option value="12">Option four with a very very very long text that will fall outside</option>
+            </select>
+             <script type="text/javascript">
+            // On document ready
+            $(function(){
+                // init the plugin with it's options on a selector by choice
+                $('#mySelect2').dropdown({
+                    minWidth: 80,
+                    maxWidth: 280
+                });
+            });
+            </script>
+            <h6>Code:</h6>
+            <pre>
+            <code>&lt;select name="mySelect2" id="mySelect2" data-tip="Select One"&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option two&lt;/option&gt;
+    &lt;option value="3"&gt;Option three with some text&lt;/option&gt;
+    &lt;option value="4"&gt;Option four with a very very very long text that will fall outside&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script type="text/javascript"&gt;
+// On document ready
+$(function(){
+    // init the plugin with it's options on a selector by choice
+    $('#mySelect2').dropdown();
+});
+&lt;/script&gt;</code>
+            </pre>
+        </div>
+        
+        <h5>3. Catching the change event</h5>
+        <div>
+            <select name="mySelect3" id="mySelect3" data-tip="Select Another">
+                <option value="1">Option 1</option>
+                <option value="2">Option two</option>
+                <option value="3">Option three with some text</option>
+                <option value="4">Option four with a very very very long text that will fall outside</option>
+            </select>
+            <h6>You selected:</h6>
+            
+            <pre>
+            <code id="select3Values"></code>
+            </pre>
+            
+            <script type="text/javascript">
+            // On document ready
+            $(function(){
+                // init the plugin with it's options on a selector by choice
+                $('#mySelect3').dropdown({
+                    change: function(newVal, oldVal){
+                        $("#select3Values").append("Selected: "+newVal+", "+oldVal+"(newVal, oldVal) \n");
+                    }
+                });
+            });
+            </script>
+            <h6>Code:</h6>
+            <pre>
+            <code>&lt;select name="mySelect3" id="mySelect3" data-tip="Select Another"&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option two&lt;/option&gt;
+    &lt;option value="3"&gt;Option three with some text&lt;/option&gt;
+    &lt;option value="4"&gt;Option four with a very very very long text that will fall outside&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script type="text/javascript"&gt;
+// On document ready
+$(function(){
+    // init the plugin with it's options on a selector by choice
+    $('#mySelect2').dropdown({
+        change: function(newVal, oldVal){
+            $("#select3Values").append("Selected: "+newVal+", "+oldVal+"(newVal, oldVal) \n");
+        }
+    });
+});
+&lt;/script&gt;</code>
+            </pre>
+        </div>
+        <!--  End Accordion -->
+        </div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+    // On document ready
+    $(function(){
+        // init the plugin with it's options on a selector by choice
+        $('select').dropdown({
+            // change event, triggered when selecting a new value
+            change: function(newValue, oldValue){
+            }
+        });
+    });
+    </script>
+    
+
+  </body>
+</html>
